@@ -6,16 +6,23 @@ namespace ProvaPub.Services
 {
     public class CustomerService
     {
-        TestDbContext _ctx;
+        private readonly TestDbContext _ctx;
+
 
         public CustomerService(TestDbContext ctx)
         {
             _ctx = ctx;
         }
 
+        //passando o id do customer é mais facil fazer a paginação pois usando o where diminui a busca de registros
         public CustomerList ListCustomers(int page)
         {
-            return new CustomerList() { HasNext = false, TotalCount = 10, Customers = _ctx.Customers.ToList() };
+            return new CustomerList()
+            {
+                HasNext = false,
+                TotalCount = 10,
+                Values = _ctx.Customers.OrderBy(b => b.Id).Skip((page - 1) * 10).Take(page * 10).ToList()
+            };
         }
 
         public async Task<bool> CanPurchase(int customerId, decimal purchaseValue)

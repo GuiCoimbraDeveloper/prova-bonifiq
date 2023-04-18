@@ -12,7 +12,7 @@ namespace ProvaPub.Controllers
 	public class Parte1Controller :  ControllerBase
 	{
 		private readonly RandomService _randomService;
-
+		//trocar o singleton pelo transient
 		public Parte1Controller(RandomService randomService)
 		{
 			_randomService = randomService;

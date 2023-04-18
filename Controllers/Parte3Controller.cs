@@ -12,6 +12,8 @@ namespace ProvaPub.Controllers
 	/// Sabemos, no entanto, que esse formato não é adequado, em especial para futuras inclusões de formas de pagamento.
 	/// Como você reestruturaria o método PayOrder para que ele ficasse mais aderente com as boas práticas de arquitetura de sistemas?
 	/// </summary>
+	/// 
+	//optei pelo principio de aberto e fechado
 	[ApiController]
 	[Route("[controller]")]
 	public class Parte3Controller :  ControllerBase
